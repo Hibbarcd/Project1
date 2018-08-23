@@ -1,15 +1,15 @@
-# GeoTweets
+# News and Views
 ### What the app does
-This application filters tweets by a geographic location 
+The site will display up to the top 20 news article results with the correspondingly most relevant youtube video result by title search 
 
 ### Why the project is useful
-The application is useful in a way that allows users to research specific locations for trending topics weather it is for research or fun browsing.
+The site allows its users to see relevant article and video results at once for interesting research or fun browsing.
 
 ### How users can get started with the project
-Users can start by searching for a desired location to get a result of tweets or they can click the random button to get a random location.
+Users type a topic of interest into the text input and click go to search that topic or they can click the random button to get a random result.
 
 ### Where users can get help with your project
-Users can read the About page to get more information about this application 
+They pretty much can't!
 
 ### Who maintains and contributes to the project
 This site will be maintained by Sadiya J, Reeve J, Chris G, & Clay H,
