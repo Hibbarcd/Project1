@@ -14,8 +14,7 @@ var database = firebase.database();
 //click event listen for submitButton
 $('#submitButton').on('click', function () {
 
-
-    const query = $('#submitInput').val().trim(); // Eventually need INPUT VALIDATION!
+    const query = encodeURI($('#submitInput').val().trim()); // Eventually need INPUT VALIDATION!
 
     //Consider extracting to useNewsAPI method that #randomButton can dump its random word into as query
     const queryURL = `https://newsapi.org/v2/everything?q=${query}&sources=cnn,abc-news&sortBy=popularity&language=en&apiKey=d63c8717380a49a38ca6816cd34124b4`;
@@ -38,12 +37,13 @@ $('#submitButton').on('click', function () {
 
             //Append a card object to the articleDiv
             $('#articleDiv').append(`
-            <div class="card m-2">
+            <div class="card border aspect-ratio">
                 <h5 class="card-header">${articles[i].title}</h5>
                 <div class="card-body">
-                    <p class="card-text">${articles[i].description}</p>
-                    <p class="card-text p-custom">Published: ${month}-${day}-${year}
-                    <a href="${articles[i].url}" class="btn btn-secondary float-right">Source</a></p>
+                    <div class="card-text cardPad">${articles[i].description}</div>
+                </div>
+                <div class="card-footer bg-transparent border-top-0"><p class="card-text">Published: ${month}-${day}-${year}
+                <a href="${articles[i].url}" class="btn btn-secondary float-right">Source</a></p>
                 </div>
             </div>
             `);
