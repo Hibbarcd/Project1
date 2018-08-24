@@ -6,8 +6,8 @@ var config = {
     projectId: "news-and-views-92a23",
     storageBucket: "news-and-views-92a23.appspot.com",
     messagingSenderId: "1016964464347"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 var database = firebase.database();
 //=========================================================store to firebase
@@ -28,16 +28,18 @@ database.ref('/users').orderByChild("dateAdded").on("child_added", function (sna
 
     console.log(users);
 
- 
+
     var searchTermBtn = $("<button>");
 
-        // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
+    // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
 
-        // 5. Then give each "letterBtns" a text equal to "letters[i]".
+    // 5. Then give each "letterBtns" a text equal to "letters[i]".
     searchTermBtn.text(users);
 
-        // 6. Finally, append each "letterBtn" to the "#buttons" div (provided).
+    // 6. Finally, append each "letterBtn" to the "#buttons" div (provided).
     $("#buttons").append(searchTermBtn);
+});
+
 //Need to add firebase related events for retaining query information for top 10 or previous search lists
 //  Pushing to database will be in query event only? Could push in random too!
 //  Should add listener for database updates so the page can update if someone else searches something while it's loaded
@@ -145,14 +147,14 @@ function appendDiv(article, video) {
     });
     // $('#articleDiv').empty();  //Get rid of previous results
 */
-    $("#randomButton").on('click', function () {
-         
+$("#randomButton").on('click', function () {
+
     var notReallyRandomWord = ['Caustic', 'Dominica', 'Genethlialogy', 'White House', 'Disasters', 'Epic', 'Football', 'Children', 'Mexico', 'Russia', 'Florida',];
-    var randomWord = notReallyRandomWord[Math.floor(Math.random()*notReallyRandomWord.length)];
+    var randomWord = notReallyRandomWord[Math.floor(Math.random() * notReallyRandomWord.length)];
     // alert('Random Word is :' + randomWord);
 
-     $("#submitInput").val(randomWord);
-     
+    $("#submitInput").val(randomWord);
+
     //  $("#randomDiv").text(randomWord);
 
 });
