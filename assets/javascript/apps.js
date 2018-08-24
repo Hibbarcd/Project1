@@ -78,11 +78,20 @@ $('#submitButton').on('click', function () {
             //       It will be much easier to format!  Waiting to figure out video API issues!
         }
     });
-        //Need to figure out authentication or use issue!
-        /*$.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURI(articles[0].title)}&safeSearch=strict&type=video&videoEmbeddable=true&key=AIzaSyDJqoHy0XZeGt8zGImByA59Maqgc7m3LZs`)
-        .then((res) => {
-            console.log(res);
-        });*/
+
     });
+    // $('#articleDiv').empty();  //Get rid of previous results
+
+    $("#randomButton").on('click', function () {
+         
+    var notReallyRandomWord = ['Caustic', 'Dominica', 'Genethlialogy', 'White House', 'Disasters', 'Epic', 'Football', 'Children', 'Mexico', 'Russia', 'Florida',];
+    var randomWord = notReallyRandomWord[Math.floor(Math.random()*notReallyRandomWord.length)];
+    // alert('Random Word is :' + randomWord);
+
+     $("#submitInput").val(randomWord);
+     
+    //  $("#randomDiv").text(randomWord);
+
+});
 
 });
