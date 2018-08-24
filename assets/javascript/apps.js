@@ -47,8 +47,13 @@ $('#submitButton').on('click', function () {
                 </div>
             </div>
             `);
+
             //TODO:  Combine article and video result into one div object that spans full page
             //       It will be much easier to format!  Waiting to figure out video API issues!
+
+
+
+
         }
 
         //Need to figure out authentication or use issue!
@@ -56,6 +61,21 @@ $('#submitButton').on('click', function () {
         .then((res) => {
             console.log(res);
         });*/
+
+        
+        $('#randomButton').on('click', function () {
+            
+            var notReallyRandomWord = ['Caustic', 'Dominica', 'Genethlialogy', 'White House', 'Disasters', 'Epic' ];
+            var notReallyRandomWord = notReallyRandomWord[Math.floor(Math.random()*notReallyRandomWord.length)];
+            
+            // $(".").text(randomNum);
+            // $('#parent').append('<div>hello</div>'); 
+            
+            alert('Random Word is :' + notReallyRandomWord);
+        })
+        
+        
     });
+ 
 
 });
