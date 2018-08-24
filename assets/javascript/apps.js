@@ -60,11 +60,11 @@ function appendDiv(article, video) {
                     <div class='row mb-3'>
                         <div class='col-xl-6 my-2'>
                             <div class="card border aspect-ratio">
-                                <h5 class="card-header">${article.title}</h5>
-                                <div class="card-body">
-                                    <div class="card-text cardPad">${article.description}</div>
+                                <h5 class="card-header cardHead">${article.title}</h5>
+                                <div class="card-body pb-0">
+                                    <div class="card-text"><p class="cardPad">${article.description}</p></div>
                                 </div>
-                                <div class="card-footer bg-transparent border-top-0"><p class="card-text">Published: ${month}-${day}-${year}
+                                <div class="card-footer bg-transparent border-top-0 pt-0"><p class="card-text">Published: ${month}-${day}-${year}
                                     <a href="${article.url}" class="btn btn-secondary float-right">Source</a></p>
                                 </div>
                             </div>

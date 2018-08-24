@@ -28,7 +28,10 @@ body {
 
   .cardPad {
       display: block;
-      width: 100%;
-      height: 120px;
+      min-height: 120px;
       overflow: none;
+  }
+
+  .cardHead {
+      min-height: 80px;
   }
