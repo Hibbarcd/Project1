@@ -11,51 +11,70 @@ var database = firebase.database();
 //  Pushing to database will be in query event only? Could push in random too!
 //  Should add listener for database updates so the page can update if someone else searches something while it's loaded
 
-//click event listen for submitButton
-$('#submitButton').on('click', function () {
+/*
+ * Click event listener for submitButton
+ * uses submitInput for API calls to construct and display article+video pairs
+*/
+$('#submitButton').on('click', async function () {
+
+    $('#contentDiv').empty(); // Remove existing results if there are any
 
     const query = encodeURI($('#submitInput').val().trim()); // Eventually need INPUT VALIDATION!
 
     //Consider extracting to useNewsAPI method that #randomButton can dump its random word into as query
     const queryURL = `https://newsapi.org/v2/everything?q=${query}&sources=cnn,abc-news&sortBy=popularity&language=en&apiKey=d63c8717380a49a38ca6816cd34124b4`;
 
-    $.get(queryURL).then((res) => {
+    const res = await $.get(queryURL); //Pause execution until result
 
-        console.log(res); // Can remove after we settle final design!
+    for (let i = 0; i < res.articles.length; i++) {
 
-        $('#articleDiv').empty();  //Get rid of previous results
+        const article = res.articles[i]; // Get each article from response object
 
-        const articles = res.articles; // Extract article array
+        requestVideo(article.title)  // Each call awaits a result before advancing
+            .then((video) => {
+                appendDiv(article, video); // Displays article+video result in contentDiv
+            });
 
-        //Build list of results in articleDiv
-        for (i = 0; i < articles.length; i++) {
-
-            //Cut out a readable date from the raw information
-            const day = articles[i].publishedAt.substring(8, 10);
-            const month = articles[i].publishedAt.substring(5, 7);
-            const year = articles[i].publishedAt.substring(0, 4);
-
-            //Append a card object to the articleDiv
-            $('#articleDiv').append(`
-            <div class="card border aspect-ratio">
-                <h5 class="card-header">${articles[i].title}</h5>
-                <div class="card-body">
-                    <div class="card-text cardPad">${articles[i].description}</div>
-                </div>
-                <div class="card-footer bg-transparent border-top-0"><p class="card-text">Published: ${month}-${day}-${year}
-                <a href="${articles[i].url}" class="btn btn-secondary float-right">Source</a></p>
-                </div>
-            </div>
-            `);
-            //TODO:  Combine article and video result into one div object that spans full page
-            //       It will be much easier to format!  Waiting to figure out video API issues!
-        }
-
-        //Need to figure out authentication or use issue!
-        /*$.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURI(articles[0].title)}&safeSearch=strict&type=video&videoEmbeddable=true&key=AIzaSyDJqoHy0XZeGt8zGImByA59Maqgc7m3LZs`)
-        .then((res) => {
-            console.log(res);
-        });*/
-    });
+    }
 
 });
+
+/*
+ * method breakout to carry article information through AJAX request
+ */
+async function requestVideo(title) {
+    const res = await $.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURI(title)}&safeSearch=strict&type=video&videoEmbeddable=true&key=AIzaSyDJqoHy0XZeGt8zGImByA59Maqgc7m3LZs`)
+    return { videoId: res.items[0].id.videoId, title }
+}
+
+/*
+ * Appends article+video information to the contentDiv
+ */
+function appendDiv(article, video) {
+
+    const day = article.publishedAt.substring(8, 10);
+    const month = article.publishedAt.substring(5, 7);
+    const year = article.publishedAt.substring(0, 4);
+    
+    $('#contentDiv').append(`
+                    <div class='row'>
+                        <div class='col-md-6'>
+                            <div class="card border aspect-ratio">
+                                <h5 class="card-header">${article.title}</h5>
+                                <div class="card-body">
+                                    <div class="card-text cardPad">${article.description}</div>
+                                </div>
+                                <div class="card-footer bg-transparent border-top-0"><p class="card-text">Published: ${month}-${day}-${year}
+                                    <a href="${article.url}" class="btn btn-secondary float-right">Source</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class='border aspect-ratio'>
+                                <iframe src="https://www.youtube.com/embed/${video.videoId}/" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    `);
+}
+
