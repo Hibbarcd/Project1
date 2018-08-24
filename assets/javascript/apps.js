@@ -55,9 +55,9 @@ function appendDiv(article, video) {
     const day = article.publishedAt.substring(8, 10);
     const month = article.publishedAt.substring(5, 7);
     const year = article.publishedAt.substring(0, 4);
-    
+
     $('#contentDiv').append(`
-                    <div class='row'>
+                    <div class='row mb-3'>
                         <div class='col-md-6'>
                             <div class="card border aspect-ratio">
                                 <h5 class="card-header">${article.title}</h5>
