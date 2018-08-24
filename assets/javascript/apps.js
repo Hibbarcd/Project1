@@ -58,7 +58,7 @@ function appendDiv(article, video) {
 
     $('#contentDiv').append(`
                     <div class='row mb-3'>
-                        <div class='col-md-6'>
+                        <div class='col-xl-6 my-2'>
                             <div class="card border aspect-ratio">
                                 <h5 class="card-header">${article.title}</h5>
                                 <div class="card-body">
@@ -69,7 +69,7 @@ function appendDiv(article, video) {
                                 </div>
                             </div>
                         </div>
-                        <div class='col-md-6'>
+                        <div class='col-xl-6 my-2'>
                             <div class='border aspect-ratio'>
                                 <iframe src="https://www.youtube.com/embed/${video.videoId}/" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
