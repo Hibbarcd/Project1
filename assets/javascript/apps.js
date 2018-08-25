@@ -19,11 +19,13 @@ database.ref('/users').orderByChild("dateAdded").on("value", function (snapshot)
 
     function buttonCreation() {
         for (i = data.length - 1; i > data.length - 11; i--) {
-            var searchTermBtn = $("<button>");
-            searchTermBtn.addClass("recentSearchButton");
-            searchTermBtn.attr("value", data[i]);
-            searchTermBtn.text(data[i]);
-            $("#buttons").append(searchTermBtn);
+            if(data[i].length > 0) {
+                var searchTermBtn = $("<button>");
+                searchTermBtn.addClass("recentSearchButton");
+                searchTermBtn.attr("value", data[i]);
+                searchTermBtn.text(data[i]);
+                $("#buttons").append(searchTermBtn);
+            }
         }
     }
 
