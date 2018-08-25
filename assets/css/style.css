@@ -36,12 +36,13 @@ h1 {
 }
 .smallglobe {
     position: relative;
+    right: 30px;
     margin: auto;
     display: block;
-    border-radius: 20px;
     width: 120px;
     height: 120px;
     overflow: visible;
+    pointer-events: none;
 }
 .random {
     width: 100px;
