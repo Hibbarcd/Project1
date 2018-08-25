@@ -23,21 +23,36 @@ $('#submitButton').on('click', function (event) {
     database.ref('/users').push(searchQuery);
 });
 
-database.ref('/users').orderByChild("dateAdded").on("child_added", function (snapshot) {
-    const users = snapshot.val();
+database.ref('/users').orderByChild("dateAdded").on("value", function (snapshot) {
 
-    console.log(users);
+    var data = [];
+    
+    snapshot.forEach(ss => {
+        data.push(ss.val());
+    })
 
+    function buttonCreation() {
+        for(i = data.length - 1; i > data.length - 11; i--) {
+            var searchTermBtn = $("<button>");
+            searchTermBtn.addClass("recentSearchButton");
+            searchTermBtn.attr("value",data[i]);
+            searchTermBtn.text(data[i]);
+            $("#buttons").append(searchTermBtn);
+        }
+    }
 
-    var searchTermBtn = $("<button>");
+    $("#buttons").empty();
+    buttonCreation();
 
-    // 3. Then give each "letterBtn" the following classes: "letter-button" "letter" "letter-button-color".
+    $('#submitButton').on('click', function (event) {
+        $("#buttons").empty();
+        buttonCreation();
+    });
 
-    // 5. Then give each "letterBtns" a text equal to "letters[i]".
-    searchTermBtn.text(users);
-
-    // 6. Finally, append each "letterBtn" to the "#buttons" div (provided).
-    $("#buttons").append(searchTermBtn);
+    $(".recentSearchButton").on('click', function () {
+        var recentSearchTerm = $(this).attr('value');
+        $("#submitInput").val(recentSearchTerm);
+    });
 });
 
 //Need to add firebase related events for retaining query information for top 10 or previous search lists
