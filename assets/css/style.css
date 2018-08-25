@@ -48,16 +48,6 @@ h1 {
     overflow: visible;
     pointer-events: none;
 }
-.random {
-    width: 100px;
-    height: 40px;
-    border-radius: 50%;
-    position: relative;
-    display: block;
-    margin: auto;
-    background: rgb(32,144,22);
-background: radial-gradient(circle, rgba(32,144,22,0.9806062073266807) 10%, rgba(0,206,255,1) 35%, rgba(242,8,8,1) 75%);
-}
 h2 {
     position: relative;
     color: red;
@@ -89,4 +79,80 @@ h2 {
     height: 100%;
     left: 0;
     top: 0;
+}
+/*=====================Button stuff============================*/
+.button{
+    border-radius: 15px;
+    
+}
+
+.random {
+    left: 25px;
+    width: 105px;
+    height: 47px;
+    border-radius: 50%;
+    transform-style: preserve-3d;
+    position: relative;
+    display: block;
+    margin: auto;
+    background: rgb(32,144,22);
+background: radial-gradient(circle, rgba(32,144,22,0.9806062073266807) 10%, rgba(0,206,255,1) 35%, rgba(242,8,8,1) 75%);
+}
+.random:hover {
+    background: rgb(6,18,20);
+    background: radial-gradient(circle, rgba(6,18,20,1) 11%, rgba(32,144,22,0.9806062073266807) 23%, rgba(242,8,8,1) 71%);
+}
+.search-button {
+    width: 105px;
+    height: 47px;
+    border-radius: 0 20px 20px 0;
+    margin: auto;
+    position: relative;
+    display: block;
+} 
+.search-button:before,
+.search-button:after{
+  width: 100px;
+  height: 45px; 
+  content: 'Looking...';
+  font-size: 1.5em;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  border-radius: 0 20px 20px 0;
+  transform: translate3D(0,-100%,0); 
+  transition: all .25s;
+}
+.search-button:before{
+  background: #fafcd6;
+  z-index: -2;
+  transform: translate3D(0,0,0);
+  background-color: whitesmoke;
+  opacity: 0;
+}
+.search-button:hover{
+    color: whitesmoke;
+}
+.search-button:after{
+  width: 100%;
+  background: #259f6c;
+  transform-origin: 0 bottom;
+  transform: translate3D(-100%,0,0) rotate(0deg);
+  opacity: 0;
+  transition-delay: .15s;
+}
+.search-button:hover:after{
+  transform: rotate(0deg);
+  transition: all .25s;
+  opacity: .8;
+  transform: translate3D(0,0,0);
+  transition: all;
+}
+  .bouncein:hover:before,
+.bouncein:hover:after{
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66) !important;
 }
