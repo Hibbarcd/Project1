@@ -54,7 +54,7 @@ $('#submitButton').on('click', async function () {
     else { $('#contentDiv').html('<h1>Search Query must not be empty or longer than 256 letters!'); }
 });
 async function searchAPIs(query) {
-    database.ref('/users').push(query);
+    database.ref('/users').push(encodeURI(query));
     const queryURL = `https://newsapi.org/v2/everything?q=${query}&sources=cnn,abc-news&sortBy=popularity&language=en&apiKey=d63c8717380a49a38ca6816cd34124b4`;
     const res = await $.get(queryURL); //Pause execution until result
     for (let i = 0; i < res.articles.length; i++) {
