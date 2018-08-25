@@ -20,36 +20,44 @@
 
     <!-- Title Bar -->
     <div class="row">
-      <div class='col my-3'>
+      <div class='col-md-6 my-3'>
         <h1 class='title'>News
           <span class='align-middle'>
             <iframe class="smallglobe" src="https://giphy.com/embed/wgHY9nSrlTMt2" width="100" height="100" frameBorder="0"></iframe>
           </span>
           Views!</h1>
       </div>
-    </div>
 
-    <!-- Search Bar and Buttons -->
-    <div class='row'>
-      <div class='col my-3'>
-        <div class="input-group input-group-lg">
-          <input type="text" class="form-control mx-1" placeholder="Unleash your Curiosity" id='submitInput'>
-          <div class="input-group-append">
-            <div class="btn-group">
-              <button class="button" type="button" id="submitButton">Go!</button>
-              <button class="random" type="button" id="randomButton">Random</button>
 
+      <!-- Search Bar and Buttons -->
+
+      <div class='col-md-6 my-3'>
+
+        <div class="row">
+          <div class='col m-3'>
+            <div id="buttons"></div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col m-3'>
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control mx-1" placeholder="Unleash your Curiosity" id='submitInput'>
+              <div class="input-group-append">
+                <div class="btn-group">
+                  <button class="button" type="button" id="submitButton">Go!</button>
+                  <button class="random" type="button" id="randomButton">Random</button>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
-    <div class="row">
-      <div class='col m-3'>
-        <div id="buttons"></div>
-      </div>
-    </div>
+
 
     <!-- Template list for videos; not going to use for the moment! 
     <div class="row">
