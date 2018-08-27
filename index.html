@@ -27,44 +27,43 @@
           </span>
           Views!</h1>
       </div>
-
-
     <!-- Search Bar and Buttons -->
       <div class='col-md-8 my-3'>
-
         <div class='row'>
           <div class='col m-5'>
             <div class="input-group input-group-lg">
-              <input type="text" class="form-control mx-1" placeholder="Unleash your Curiosity" id='submitInput'>
+              <input type="text" class="form-control mx-1" style="color: #ffffff" placeholder="Unleash your Curiosity" id='submitInput'>
               <div class="input-group-append">
                 <div class="btn-group">
                   <button class="search-button" type="button" id="submitButton">Go!</button>
                   <button class="random" type="button" id="randomButton">Random</button>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+        <script type="text/babel">
+            class App extends React.Component { 
+                render() { 
+                    return (
+                        <h1>Most Recent Searches</h1>
+                    ); 
+                } 
+            } 
+            ReactDOM.render(<App />, document.getElementByClass("root"))   
+        </script>
         <div class="row">
           <div class='col m-3'>
             <div class="card bg-transparent">
               <div class="card-body">
-                <h3 class="card-title text-center textColor">Most Recent Searches</h5>
+                  <div class="react" id="root">Most Recent Searches</div>
                 <div class="card-text" id="buttons"></div>
               </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
-
-
-
     <!-- Template list for videos; not going to use for the moment! 
     <div class="row">
       <div class="col-md-8">
@@ -86,23 +85,17 @@
       </div>
     </div>
     -->
-
     <!-- Major content skeleton; here's where the articles and videos will go! -->
     <div class='row'>
       <div class='col' id='contentDiv'>
 
       </div>
     </div>
-
-
     <!-- Footer -->
     <div class="footer navbar-fixed-bottom">
       <p class="m-0 text-center text-white">Copyright &copy; Whatever Content 2018</p>
     </div>
-
-    <!-- Container wraps everything! -->
   </div>
-
   <!-- Scripts! -->
   <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
